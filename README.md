@@ -19,6 +19,11 @@ python -c "from src.db_handler import init_db; init_db()"
 - Voeg een oefening toe:
 python src/cli.py add --name "Push Ups" --sets 3 --reps 10
 
+- Kijken of een oefening is toegevoegd:
+python -m src.cli list
+
+
+
 
 
 
