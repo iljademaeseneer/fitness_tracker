@@ -22,7 +22,15 @@ python src/cli.py add --name "Push Ups" --sets 3 --reps 10
 - Kijken of een oefening is toegevoegd:
 python -m src.cli list
 
+### Manipulaties
+- **Verwijder een oefening:**
+python src/cli.py delete --id <ID>
 
+- **Bewerk een oefening:**
+python src/cli.py update --id <ID> [--name <naam>] [--sets <sets>] [--reps <reps>]
+
+- **Filter oefeningen op datum:**
+python src/cli.py filter --date <YYYY-MM-DD>
 
 
 
