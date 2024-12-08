@@ -23,3 +23,32 @@ def list_exercises(db_path='database/example.db'):
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+def delete_exercise(exercise_id, db_path='database/example.db'):
+    conn = get_connection(db_path)
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM exercises WHERE id = ?", (exercise_id,))
+    conn.commit()
+    conn.close()
+
+def update_exercise(exercise_id, name=None, sets=None, reps=None, db_path='database/example.db'):
+    conn = get_connection(db_path)
+    cursor = conn.cursor()
+    if name:
+        cursor.execute("UPDATE exercises SET name = ? WHERE id = ?", (name, exercise_id))
+    if sets:
+        cursor.execute("UPDATE exercises SET sets = ? WHERE id = ?", (sets, exercise_id))
+    if reps:
+        cursor.execute("UPDATE exercises SET reps = ? WHERE id = ?", (reps, exercise_id))
+    conn.commit()
+    conn.close()
+
+def filter_exercises_by_date(date, db_path='database/example.db'):
+    conn = get_connection(db_path)
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, name, sets, reps, date FROM exercises WHERE date = ?", (date,))
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+
